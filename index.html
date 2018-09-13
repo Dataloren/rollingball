@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+	<link rel="stylesheet" href="rolling.css">
+	<script type="text/javascript" src="jquery-3.3.1.min.js"></script>
+  <title>Bouncing ball</title>
+</head>
+<body>
+  
+  <div id="space">
+     <img src="https://raw.githubusercontent.com/Dataloren/test-repository/master/ball2.png" id="ball" />
+  </div>
+
+	<script>window.onload = function(){
+
+
+  var ball = document.getElementById('ball');
+  var height = window.innerHeight;
+  var width = window.innerWidth;
+  var deg = 2;
+  var rotDifference = 3;
+  var destX = width;
+  var destY = height/1.3;
+  var x = 5;
+  var y = 5;
+  var step = 5;
+  ball.style.position="absolute";
+
+
+function move(){
+  if(x < destX){
+    x = x + step;
+  if(y < destY)
+    y = y + step;
+
+  ball.style.top = y + 'px';
+  ball.style.left = x + 'px';
+  ball.style.transform ="rotate("+deg+"deg)";
+
+    if((x+ step < destX) ||(y + step < destY)){
+      window.requestAnimationFrame(move);
+      deg = deg+ rotDifference;
+    }
+  }
+
+}
+
+window.requestAnimationFrame(move);
+};
+
+</script>
+</body>
+</html>
